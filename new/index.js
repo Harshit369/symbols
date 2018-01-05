@@ -11,4 +11,4 @@ console.log(Symbols('zlatan').toString()) // "Symbol(zlatan)"
 
 /* Two symbols with same definitions can never be equal
 (there are methods to do such things, bear with me here) */
-console.log(Symbol('zlatan') === Symbol('zlatan')) //false
+console.log(Symbol('zlatan') === Symbol('zlatan')) // false
