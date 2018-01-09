@@ -17,3 +17,6 @@ const mine = Symbol.for('pikachu');
 const yours = Symbol.for('pikachu');
 
 console.log(mine === yours) // true
+
+const globalSymbol = Symbol.for('everyone knows me'); // "everyone knows me"
+const localSymbol = Symbol('see ya');  // undefined
