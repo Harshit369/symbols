@@ -11,3 +11,14 @@ The other use case that makes Symbols more useful or advance is the availability
     }
   }
 ```
+
+* #### Symbol.iterator : `for of` loop
+ES6 brings us a new pattern to iterate over collections using `for of` loop, which calls Symbol.iterator on the right-hand operator to get the next value. it calls `[Symbol.iterator].next()` each time it initializes the value. where `[Symbol.iterator]` property should be a generator function.
+```javascript
+  Class myCollection {
+    *[Symbol.iterator]() {
+      yield // next iterated value;
+    }
+  }
+```
+you can read more about generator functions [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_Generators).
