@@ -22,3 +22,6 @@ ES6 brings us a new pattern to iterate over collections using `for of` loop, whi
   }
 ```
 you can read more about generator functions [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_Generators).
+
+* #### Symbol.isConcatSpereadable: Array.concat
+isConcatSpereadable is a symbol that has a very specific usecase. it drives the behaviour of `Array.concat()`. Its useful for classes that extend Array. the way Array.concat will decide if any of its arguments is spereadable is by calling `Symbol.isConcatSpereadable` of argument's Class;
