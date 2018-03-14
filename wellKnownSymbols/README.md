@@ -25,3 +25,19 @@ you can read more about generator functions [here](https://developer.mozilla.org
 
 * #### Symbol.isConcatSpereadable: Array.concat
 isConcatSpereadable is a symbol that has a very specific usecase. it drives the behaviour of `Array.concat()`. Its useful for classes that extend Array. the way Array.concat will decide if any of its arguments is spereadable is by calling `Symbol.isConcatSpereadable` of argument's Class;
+
+* #### Symbol.match: String.match()
+`Symbol.match` is another symbol that is specific to match function in Strings to find matches of sub-strings in a string. it can be used to write even your custom matcher class and match will always call `[Symbol.match](HaysackString)` property of your class.
+```javascript
+class MyMatcher {
+  constructor(value) {
+    // set value to use it further.
+    this.value = value;
+  }
+
+  [Symbol.match](string) {
+    //use custom logic to match on string
+    return {}; // return in your desired format
+  }
+}
+```
