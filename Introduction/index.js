@@ -18,5 +18,11 @@ const yours = Symbol.for('pikachu');
 
 console.log(mine === yours) // true
 
-const globalSymbol = Symbol.for('everyone knows me'); // "everyone knows me"
-const localSymbol = Symbol('see ya');  // undefined
+const globalSymbol = Symbol.for('everyone knows me');
+const localSymbol = Symbol('see ya');
+
+// Symbol.keyFor can be used to find the original definition of a symbol (only global symbols, returns undefined for local symbols)
+console.log(Symbol.keyFor(globalSymbol)); // "everyone knows me"
+console.log(Symbol.keyFor(localSymbol)); // undefined
+
+console.log(Symbol.for(Symbol.keyFor(globalSymbol)) === Symbol.for('everyone knows me')); // true
