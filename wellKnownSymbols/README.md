@@ -41,3 +41,19 @@ class MyMatcher {
   }
 }
 ```
+
+* #### Symbol.search: String.search()
+Just like `Symbol.match`. `Symbol.search` drives the behaviour of search meathod in string class. Allowing for custom classes instead of regular expression.
+```javascript
+class MyMatcher {
+  constructor(value) {
+    // set value to use it further.
+    this.value = value;
+  }
+
+  [Symbol.search](string) {
+    //use custom logic to search on string
+    return {}; // return in your desired format
+  }
+}
+```
