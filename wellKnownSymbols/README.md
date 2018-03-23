@@ -73,3 +73,6 @@ class MyReplacer {
   }
 }
 ```
+
+* #### Symbol.split: String.split()
+The last Symbol for string `Symbol.split` works similar to some described string related Symbols and allows custom split logic using `[Symbol.split](string)` method.
