@@ -57,3 +57,19 @@ class MyMatcher {
   }
 }
 ```
+
+* #### Symbol.replace: String.replace()
+Another Symbol specific to String class is `Symbol.replace` that allows you to use custom classes. This also opens the scope for the replacer to be another mutating function.
+```javascript
+class MyReplacer {
+  constructor(value) {
+    // set value to use it further.
+    this.value = value;
+  }
+
+  [Symbol.replace](string, replacer) {
+    //use custom logic to search and replace
+    return {}; // return in your desired format
+  }
+}
+```
