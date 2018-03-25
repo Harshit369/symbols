@@ -76,3 +76,13 @@ class MyReplacer {
 
 * #### Symbol.split: String.split()
 The last Symbol for string `Symbol.split` works similar to some described string related Symbols and allows custom split logic using `[Symbol.split](string)` method.
+
+* #### Symbol.toPrimitive
+`Symbol.toPrimitive` is the closest thing to operator overloading we have. toPrimitive is called when JS engine needs to convert your Object into some primitive value.
+```
++Object calls Object[Symbol.toPrimitive]('number')
+"" + Object calls Object[Symbol.toPrimitive]('string')
+if(Object) calls Object[Symbol.toPrimitive]('default')
+.
+and So.
+```
