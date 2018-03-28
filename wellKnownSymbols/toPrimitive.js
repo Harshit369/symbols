@@ -5,13 +5,13 @@ class CheckToPrimitiveBehaviour {
     } else if (mood === 'number') {
       return 0;
     } else {
-      return 100;
+      return 'default';
     }
   }
 }
 
 let Obj = new CheckToPrimitiveBehaviour();
 
-console.log(+Obj);
-console.log('' + Obj);
-console.log(!Obj);
+console.log(+Obj); // 0
+String(Obj) // Nope
+console.log(!Obj); // default
