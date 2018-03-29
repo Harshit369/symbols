@@ -86,3 +86,28 @@ if(Object) calls Object[Symbol.toPrimitive]('default')
 .
 and So.
 ```
+
+* #### Symbol.species
+`Symbol.species` is a nice cool/smart Symbol. it points to the constructor value of the Symbol and allows classes to create instances of themselves inside within their methods. Take the example of Array.map(). in ES5 it would have been implemented somewhat like this.
+```javascript
+Array.prototype.map = function(callback) {
+  var newArray = new Array(this.length);
+  this.forEach(function(item, index, array){
+    newArray[index] = callback(index, index, array)
+  })
+  return newArray;
+}
+```
+In ES6 all ***non-mutating*** methods have been migrated to `Symbol.species` like:
+```javascript
+Array.prototype.map = function(callback) {
+  var Species = this.constructor[Symbol.species];
+  var newArray = new Species(this.length); // array of instance type of this class
+  this.forEach(function(item, index, array){
+    newArray[index] = callback(index, index, array)
+  })
+  return newArray;
+}
+```
+
+Now if u would have created an Object(function) `ArrayCousin` with prototype same as `Array` and had called `map()` on that, it would have returned an `Array`. but with ES6 implementations it returns an Object with an instance of type `ArrayCousin`.
