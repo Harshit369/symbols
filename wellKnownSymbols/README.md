@@ -110,4 +110,34 @@ Array.prototype.map = function(callback) {
 }
 ```
 
-Now if u would have created an Object(function) `ArrayCousin` with prototype same as `Array` and had called `map()` on that, it would have returned an `Array`. but with ES6 implementations it returns an Object with an instance of type `ArrayCousin`.
+Now if u would have created an Object(function) `ArrayCousin` with prototype same as `Array` and had called `map()` on that, it would have returned an `Array`. but with ES6 implementations it returns an Object with an instance of type `ArrayCousin`. 
+
+The advantage of `this.constructor[Symbol.species]` over `this.construtor` is that it provides you a customizable endpoint to find the specie of a class.
+
+```javascript
+  class List extends Array {
+    static get [Symbol.species]() {
+      return this;
+    }
+  }
+
+  class MoreLikeArray extends Array {
+    static get [Symbol.species]() {
+      return Array;
+    }
+  }
+```
+
+* #### Symbol.toStringTag
+***Sighs*** So this is the last well known Symbol and it can be helpful when you are bored of some weird `[object Object]` and `[object Array]` type checking operations using `typeof` operator. Since ES6 this behaviour of a class can be configured using `Symbol.toStringTag` like: 
+
+```javascript
+class MyCollection extends Object {
+  get [Symbol.toStringTag]() {
+    return 'MyCollection';
+  }
+}
+
+const collectiontObj = new MyCollection();
+console.log(Object.prototype.toString.call(collectionObj)); // '[object MyCollection]'
+```
